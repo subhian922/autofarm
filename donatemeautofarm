@@ -44,7 +44,6 @@ local httprequest = (syn and syn.request) or http and http.request or http_reque
 local httpservice = game:GetService('HttpService')
 queueonteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/tzechco/roblox-scripts/main/PLS%20DONATE/autofarm.lua'))()")
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/tzechco/roblox-scripts/main/UI/ui-engine-v2.lua"))()
-
 local function claimGifts()
     pcall(function()
         Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -240,8 +239,8 @@ end
 --GUI
 local Window = library:AddWindow("Loading...",
 {
-    main_color = Color3.fromRGB(0, 128, 0),
-    min_size = Vector2.new(373, 433),
+    main_color = Color3.fromRGB(32, 3, 252),
+    min_size = Vector2.new(500, 433),
     toggle_key = Enum.KeyCode.RightShift,
 })
 local boothTab = Window:AddTab("Booth")
@@ -250,6 +249,7 @@ local chatTab = Window:AddTab("Spam")
 local webhookTab = Window:AddTab("Webhook")
 local serverHopTab = Window:AddTab("Server")
 local otherTab = Window:AddTab("Dance")
+local creditsTab = Window:AddTab("credits")
 
 --Booth Settings
 local textUpdateToggle = boothTab:AddSwitch("Text Update", function(bool)
@@ -590,15 +590,14 @@ if setfpscap and type(setfpscap) == "function" then
     end,
     {
         ["min"] = 1,
-        ["max"] = 60
+        ["max"] = 600
     })
-    fpsLimit:Set((getgenv().settings.fpsLimit / 60) * 100)
+    fpsLimit:Set((getgenv().settings.fpsLimit / 600) * 100)
     setfpscap(getgenv().settings.fpsLimit)
 end
 boothTab:Show()
 library:FormatWindows()
 settingsLock = false
-
 --Finds unclaimed booths
 local function findUnclaimed()
     for i, v in pairs(Players.LocalPlayer.PlayerGui.MapUIContainer.MapUI.BoothUI:GetChildren()) do
@@ -631,6 +630,9 @@ while not pcall(boothclaim) do
 end
 
 hopSet()
+--credit tab
+creditsTab:AddLabel("\n \n \n \n \n \nMADE BY SHOOTER \n DISCORD LINK \n https://discord.gg/eQ2YqNtf \n \n \n NOTE: Gui been copy a bit", function(text)
+    end)
 --Walks to booth
 local Controls = require(Players.LocalPlayer.PlayerScripts:WaitForChild("PlayerModule")):GetControls()
 Controls:Disable()
